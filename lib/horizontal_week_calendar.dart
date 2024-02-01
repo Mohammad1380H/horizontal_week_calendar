@@ -192,7 +192,7 @@ class _HorizontalWeekCalendarState extends State<HorizontalWeekCalendar> {
     var theme = Theme.of(context);
     var withOfScreen = MediaQuery.of(context).size.width;
 
-    double boxHeight = withOfScreen / 7;
+    double boxHeight = withOfScreen / 6;
 
     return currentWeek.isEmpty
         ? const SizedBox()
@@ -200,7 +200,7 @@ class _HorizontalWeekCalendarState extends State<HorizontalWeekCalendar> {
             children: [
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // GestureDetector(
                   //   onTap: () {
@@ -294,14 +294,12 @@ class _HorizontalWeekCalendarState extends State<HorizontalWeekCalendar> {
                                 weekIndex++)
                               Expanded(
                                 child: GestureDetector(
-                                  onTap: listOfWeeks[ind][weekIndex]
-                                          .isBefore(DateTime.now())
-                                      ? () {
+                                  onTap:  () {
                                           onDateSelect(
                                             listOfWeeks[ind][weekIndex],
                                           );
                                         }
-                                      : null,
+                                     ,
                                   child: Container(
                                     alignment: Alignment.center,
                                     decoration: BoxDecoration(
