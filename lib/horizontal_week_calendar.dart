@@ -202,33 +202,33 @@ class _HorizontalWeekCalendarState extends State<HorizontalWeekCalendar> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      onBackClick();
-                    },
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.arrow_back_ios_new,
-                          size: 17,
-                          color:
-                              widget.activeNavigatorColor ?? theme.primaryColor,
-                        ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Text(
-                          "Back",
-                          style: theme.textTheme.bodyLarge!.copyWith(
-                            color: widget.activeNavigatorColor ??
-                                theme.primaryColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     onBackClick();
+                  //   },
+                  //   child: Row(
+                  //     crossAxisAlignment: CrossAxisAlignment.center,
+                  //     children: [
+                  //       Icon(
+                  //         Icons.arrow_back_ios_new,
+                  //         size: 17,
+                  //         color:
+                  //             widget.activeNavigatorColor ?? theme.primaryColor,
+                  //       ),
+                  //       const SizedBox(
+                  //         width: 4,
+                  //       ),
+                  //       Text(
+                  //         "Back",
+                  //         style: theme.textTheme.bodyLarge!.copyWith(
+                  //           color: widget.activeNavigatorColor ??
+                  //               theme.primaryColor,
+                  //           fontWeight: FontWeight.bold,
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   Text(
                     isCurrentYear()
                         ? DateFormat('MMMM').format(
@@ -242,37 +242,37 @@ class _HorizontalWeekCalendarState extends State<HorizontalWeekCalendar> {
                       color: widget.monthColor ?? theme.primaryColor,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: isNextDisabled()
-                        ? () {
-                            onNextClick();
-                          }
-                        : null,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Next",
-                          style: theme.textTheme.bodyLarge!.copyWith(
-                            color: isNextDisabled()
-                                ? theme.primaryColor
-                                : widget.inactiveNavigatorColor ?? Colors.grey,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 17,
-                          color: isNextDisabled()
-                              ? theme.primaryColor
-                              : widget.inactiveNavigatorColor ?? Colors.grey,
-                        ),
-                      ],
-                    ),
-                  ),
+                  // GestureDetector(
+                  //   onTap: isNextDisabled()
+                  //       ? () {
+                  //           onNextClick();
+                  //         }
+                  //       : null,
+                  //   child: Row(
+                  //     crossAxisAlignment: CrossAxisAlignment.center,
+                  //     children: [
+                  //       Text(
+                  //         "Next",
+                  //         style: theme.textTheme.bodyLarge!.copyWith(
+                  //           color: isNextDisabled()
+                  //               ? theme.primaryColor
+                  //               : widget.inactiveNavigatorColor ?? Colors.grey,
+                  //           fontWeight: FontWeight.bold,
+                  //         ),
+                  //       ),
+                  //       const SizedBox(
+                  //         width: 4,
+                  //       ),
+                  //       Icon(
+                  //         Icons.arrow_forward_ios,
+                  //         size: 17,
+                  //         color: isNextDisabled()
+                  //             ? theme.primaryColor
+                  //             : widget.inactiveNavigatorColor ?? Colors.grey,
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
               const SizedBox(
@@ -329,6 +329,35 @@ class _HorizontalWeekCalendarState extends State<HorizontalWeekCalendar> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
+                                        Text(
+                                          DateFormat(
+                                            'EEE',
+                                          ).format(
+                                            listOfWeeks[ind][weekIndex],
+                                          ),
+                                          textAlign: TextAlign.center,
+                                          style: theme.textTheme.bodyLarge!
+                                              .copyWith(
+                                            color: DateFormat('dd-MM-yyyy')
+                                                        .format(listOfWeeks[ind]
+                                                            [weekIndex]) ==
+                                                    DateFormat('dd-MM-yyyy')
+                                                        .format(selectedDate)
+                                                ? widget.activeTextColor ??
+                                                    Colors.white
+                                                : listOfWeeks[ind][weekIndex]
+                                                        .isBefore(
+                                                            DateTime.now())
+                                                    ? widget.inactiveTextColor ??
+                                                        Colors.white
+                                                            .withOpacity(.2)
+                                                    : widget.disabledTextColor ??
+                                                        Colors.white,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 4,
+                                        ),
                                         FittedBox(
                                           child: Text(
                                             // "$weekIndex: ${listOfWeeks[ind][weekIndex] == DateTime.now()}",
@@ -354,35 +383,6 @@ class _HorizontalWeekCalendarState extends State<HorizontalWeekCalendar> {
                                                           Colors.white,
                                               fontWeight: FontWeight.bold,
                                             ),
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          height: 4,
-                                        ),
-                                        Text(
-                                          DateFormat(
-                                            'EEE',
-                                          ).format(
-                                            listOfWeeks[ind][weekIndex],
-                                          ),
-                                          textAlign: TextAlign.center,
-                                          style: theme.textTheme.bodyLarge!
-                                              .copyWith(
-                                            color: DateFormat('dd-MM-yyyy')
-                                                        .format(listOfWeeks[ind]
-                                                            [weekIndex]) ==
-                                                    DateFormat('dd-MM-yyyy')
-                                                        .format(selectedDate)
-                                                ? widget.activeTextColor ??
-                                                    Colors.white
-                                                : listOfWeeks[ind][weekIndex]
-                                                        .isBefore(
-                                                            DateTime.now())
-                                                    ? widget.inactiveTextColor ??
-                                                        Colors.white
-                                                            .withOpacity(.2)
-                                                    : widget.disabledTextColor ??
-                                                        Colors.white,
                                           ),
                                         ),
                                       ],
