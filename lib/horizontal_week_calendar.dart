@@ -179,7 +179,7 @@ class _HorizontalWeekCalendarState extends State<HorizontalWeekCalendar> {
   // =================
 
   isNextDisabled() {
-    return listOfWeeks[currentWeekIndex].last.isBefore(DateTime.now());
+    return false;
   }
 
   isCurrentYear() {
